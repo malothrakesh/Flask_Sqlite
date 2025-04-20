@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">404 - Page Not Found</h1>
+        <p class="text-center">Sorry, the page you are looking for does not exist.</p>
+        <p class="text-center">
+            <a href="{{ url_for('book_bp.book_list') }}" class="btn btn-primary">Go to Book List</a>
+        </p>
+    </div>
+</body>
+</html>

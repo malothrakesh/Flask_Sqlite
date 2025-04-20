@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Manager</title>
+</head>
+<body>
+    <h1>Book Manager</h1>
+
+    <form method="GET" action="{{ url_for('book_bp.index') }}">
+        <input type="text" name="q" placeholder="Search by title or author" value="{{ search_query or '' }}">
+        <button type="submit">Search</button>
+    </form>
+
+    <form method="POST" action="{{ url_for('book_bp.add') }}">
+        <input type="text" name="title" placeholder="Title" required>
+        <input type="text" name="author" placeholder="Author" required>
+        <button type="submit">Add Book</button>
+    </form>
+
+    <ul>
+        {% for book in books.items %}
+        <li>
+            <strong>{{ book.title }}</strong> by {{ book.author }}
+            [<a href="{{ url_for('book_bp.edit', id=book.id) }}">Edit</a>]
+            [<a href="{{ url_for('book_bp.delete', id=book.id) }}">Delete</a>]
+        </li>
+        {% endfor %}
+    </ul>
+
+    <div class="pagination">
+        {% if books.has_prev %}
+            <a href="{{ url_for('book_bp.index', page=books.prev_num, q=search_query) }}">Previous</a>
+        {% endif %}
+        <span>Page {{ books.page }} of {{ books.pages }}</span>
+        {% if books.has_next %}
+            <a href="{{ url_for('book_bp.index', page=books.next_num, q=search_query) }}">Next</a>
+        {% endif %}
+    </div>
+</body>
+</html>

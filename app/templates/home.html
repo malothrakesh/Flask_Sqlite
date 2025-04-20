@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    <h1>📚 Welcome to the Book Manager App!</h1>
+    <p class="lead">Easily manage, add, and search your favorite books.</p>
+    <a href="{{ url_for('auth_bp.login') }}" class="btn btn-primary">Login</a>
+</div>
+{% endblock %}
